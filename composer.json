@@ -3,17 +3,22 @@
     "description": "A PHP based command-line interface tool for working with ADR",
     "type": "library",
     "keywords": ["AD", "ADR"],
-    "require": {
-        "symfony/console": "^4.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^6.5"
-    },
     "authors": [
         {
             "name": "José Carlos",
             "email": "josecarlos@globtec.com.br"
         }
     ],
+    "require": {
+        "symfony/console": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ADR\\": "src/"
+        }
+    },
     "minimum-stability": "dev"
 }
