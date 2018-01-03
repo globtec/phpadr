@@ -14,5 +14,6 @@
             "name": "José Carlos",
             "email": "josecarlos@globtec.com.br"
         }
-    ]
+    ],
+    "minimum-stability": "dev"
 }
