@@ -3,6 +3,7 @@
 namespace ADR\Command;
 
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Console\Command\Command;
 
 class CreateAdrCommandTest extends TestCase
 {
@@ -13,9 +14,9 @@ class CreateAdrCommandTest extends TestCase
         $this->command = new CreateAdrCommand();
     }
 
-    public function testInstanceOfCreateAdrCommand()
+    public function testInstanceOfCommand()
     {
-        $this->assertInstanceOf(CreateAdrCommand::class, $this->command);
+        $this->assertInstanceOf(Command::class, $this->command);
     }
 
     public function testName()
