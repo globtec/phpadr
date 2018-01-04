@@ -12,7 +12,7 @@ class CreateAdrCommand extends Command
     {
         $this
             ->setName('adr:create')
-            ->setDescription('Creates a new adr file')
-            ->setHelp('This command allows you to create a new adr file');
+            ->setDescription('Creates a new ADR file')
+            ->setHelp('This command allows you to create a new ADR file');
     }
 }
