@@ -15,7 +15,7 @@ class CreateAdrCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('adr:create')
+            ->setName('make:skeleton')
             ->setDescription('Creates a new ADR file')
             ->setHelp('This command allows you to create a new ADR file')
             ->addArgument('title', InputArgument::REQUIRED, 'The title of the ADR');

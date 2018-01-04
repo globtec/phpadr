@@ -23,7 +23,7 @@ class CreateAdrCommandTest extends TestCase
 
     public function testName()
     {
-        $this->assertEquals('adr:create', $this->command->getName());
+        $this->assertEquals('make:skeleton', $this->command->getName());
     }
 
     public function testDescription()
