@@ -20,4 +20,17 @@ class CreateAdrCommand extends Command
             ->setHelp('This command allows you to create a new ADR file')
             ->addArgument('title', InputArgument::REQUIRED, 'The title of the ADR');
     }
+
+    /**
+     * Execute the command
+     * 
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        //TODO: Create a new ADR file
+
+        $output->writeln('ADR file successfully generated');
+    }
 }
