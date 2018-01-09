@@ -36,6 +36,39 @@ class CreateAdrCommandTest extends TestCase
         $this->assertEquals('This command allows you to create a new ADR file', $this->command->getHelp());
     }
     
+    public function testArguments()
+    {
+        $this->assertTrue($this->command->getDefinition()->hasArgument('title'));
+        
+        $this->assertCount(1, $this->command->getDefinition()->getArguments());
+    }
+    
+    public function testArgumentTitle()
+    {
+        $argument = $this->command->getDefinition()->getArgument('title');
+        
+        $this->assertTrue($argument->isRequired());
+        $this->assertEquals('The title of the ADR', $argument->getDescription());
+        $this->assertNull($argument->getDefault());
+    }
+    
+    public function testOptions()
+    {
+        $this->assertTrue($this->command->getDefinition()->hasOption('directory'));
+        
+        $this->assertCount(1, $this->command->getDefinition()->getOptions());
+    }
+    
+    public function testOptionDirectory()
+    {
+        $option = $this->command->getDefinition()->getOption('directory');
+        
+        $this->assertNull($option->getShortcut());
+        $this->assertTrue($option->isValueRequired());
+        $this->assertEquals('Workspace that store the ADRs', $option->getDescription());
+        $this->assertEquals('docs', $option->getDefault());
+    }
+    
     public function testExecute()
     {
         (new Application())->add($this->command);

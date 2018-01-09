@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Input\InputOption;
 
 class CreateAdrCommand extends Command
 {
@@ -18,7 +19,18 @@ class CreateAdrCommand extends Command
             ->setName('make:skeleton')
             ->setDescription('Creates a new ADR file')
             ->setHelp('This command allows you to create a new ADR file')
-            ->addArgument('title', InputArgument::REQUIRED, 'The title of the ADR');
+            ->addArgument(
+                'title',
+                InputArgument::REQUIRED,
+                'The title of the ADR'
+            )
+            ->addOption(
+                'directory',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Workspace that store the ADRs',
+                'docs'
+            );
     }
 
     /**
