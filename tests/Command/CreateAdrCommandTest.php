@@ -28,12 +28,12 @@ class CreateAdrCommandTest extends TestCase
 
     public function testDescription()
     {
-        $this->assertEquals('Creates a new ADR file', $this->command->getDescription());
+        $this->assertEquals('Creates a new ADR', $this->command->getDescription());
     }
 
     public function testHelp()
     {
-        $this->assertEquals('This command allows you to create a new ADR file', $this->command->getHelp());
+        $this->assertEquals('This command allows you to create a new ADR', $this->command->getHelp());
     }
     
     public function testArguments()

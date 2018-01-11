@@ -17,8 +17,8 @@ class CreateAdrCommand extends Command
     {
         $this
             ->setName('make:skeleton')
-            ->setDescription('Creates a new ADR file')
-            ->setHelp('This command allows you to create a new ADR file')
+            ->setDescription('Creates a new ADR')
+            ->setHelp('This command allows you to create a new ADR')
             ->addArgument(
                 'title',
                 InputArgument::REQUIRED,
