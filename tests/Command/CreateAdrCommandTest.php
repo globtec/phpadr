@@ -66,7 +66,7 @@ class CreateAdrCommandTest extends TestCase
         $this->assertNull($option->getShortcut());
         $this->assertTrue($option->isValueRequired());
         $this->assertEquals('Workspace that store the ADRs', $option->getDescription());
-        $this->assertEquals('docs', $option->getDefault());
+        $this->assertEquals('docs/arch', $option->getDefault());
     }
     
     public function testExecute()

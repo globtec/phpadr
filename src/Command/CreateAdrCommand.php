@@ -29,7 +29,7 @@ class CreateAdrCommand extends Command
                 null,
                 InputOption::VALUE_REQUIRED,
                 'Workspace that store the ADRs',
-                'docs'
+                'docs/arch'
             );
     }
 
