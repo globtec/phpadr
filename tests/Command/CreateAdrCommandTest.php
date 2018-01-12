@@ -6,14 +6,19 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
+use ADR\Filesystem;
 
 class CreateAdrCommandTest extends TestCase
 {
     private $command;
+    
+    private $workspace;
 
     public function setUp()
     {
-        $this->command = new CreateAdrCommand();
+        $this->workspace = $this->getMockBuilder(Filesystem\Workspace::class)->getMock();
+        
+        $this->command = new CreateAdrCommand($this->workspace);
     }
 
     public function testInstanceOfCommand()
@@ -72,10 +77,19 @@ class CreateAdrCommandTest extends TestCase
     public function testExecute()
     {
         (new Application())->add($this->command);
-
+        
+        $this->workspace->expects($this->once())
+            ->method('set')
+            ->with($this->equalTo('docs'));
+        
         $tester = new CommandTester($this->command);
-        $tester->execute(['command' => $this->command->getName(), 'title' => 'Foo']);
 
+        $tester->execute([
+            'command'     => $this->command->getName(), 
+            'title'       => 'Foo',
+            '--directory' => 'docs'
+        ]);
+        
         $this->assertRegexp('/ADR file successfully generated/', $tester->getDisplay());
     }
 }
