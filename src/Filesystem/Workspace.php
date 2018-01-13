@@ -2,8 +2,6 @@
 
 namespace ADR\Filesystem;
 
-use RuntimeException;
-
 /**
  * Class that defines workspace where the ADRs will be stored
  *
@@ -45,7 +43,7 @@ class Workspace
      * 
      * @param string $directory The directory path
      * 
-     * @throws RuntimeException
+     * @throws \RuntimeException
      */
     private function make(string $directory)
     {
@@ -56,12 +54,11 @@ class Workspace
         }
          
         if (! is_writable($parent)) {
-            throw new RuntimeException(sprintf(
-                'The parent directory is not writable: %s',
-                $parent
-            ));
+            throw new \RuntimeException("The parent directory isn't writable: $parent");
         }
         
-        mkdir($directory, 0777, true);
+        if (! mkdir($directory, 0777, true)) {
+            throw new \RuntimeException("Illegal directory: $directory");
+        }
     }
 }
