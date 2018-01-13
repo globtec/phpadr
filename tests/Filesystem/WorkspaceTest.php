@@ -3,7 +3,7 @@
 namespace ADR\Filesystem;
 
 use PHPUnit\Framework\TestCase;
-use RuntimeException;
+use org\bovigo\vfs\vfsStream;
 
 class WorkspaceTest extends TestCase
 {
@@ -16,17 +16,17 @@ class WorkspaceTest extends TestCase
     
     public function testSetWithSuccess()
     {
-        $directory = sys_get_temp_dir() . '/docs/archs';
+        $directory = vfsStream::setup()->url();
         
         $this->workspace->set($directory);
-
+        
         $this->assertEquals($directory, $this->workspace->get());
         $this->assertDirectoryIsWritable($this->workspace->get());
     }
     
     public function testSetWithFailure()
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(\RuntimeException::class);
         
         $this->workspace->set('/path/to/docs/arch');
     }
