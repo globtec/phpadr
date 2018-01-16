@@ -7,8 +7,6 @@ use org\bovigo\vfs\vfsStream;
 
 class FilenameTest extends TestCase
 {
-    private $record;
-    
     private $workspace;
     
     public function setUp()
@@ -66,5 +64,19 @@ class FilenameTest extends TestCase
             
             $root->addChild(vfsStream::newFile($actual));
         }
+    }
+    
+    public function testPathname()
+    {
+        $directory = vfsStream::setup()->url();
+        
+        $this->workspace->expects($this->any())
+            ->method('get')
+            ->willReturn($directory);
+        
+        $expected = $directory . DIRECTORY_SEPARATOR . '0001-foo.md';
+            
+        $this->assertEquals($expected, $this->filename->pathname('Foo'));
+        
     }
 }

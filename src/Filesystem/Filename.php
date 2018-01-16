@@ -23,14 +23,27 @@ class Filename
     }
     
     /**
-     * Get filename 
+     * Get file name 
      * 
      * @param string $title
+     * 
      * @return string
      */
     public function get(string $title) : string
     {
-        return  $this->sequence() . '-' . $this->sluggify($title) . '.md';
+        return $this->sequence() . '-' . $this->sluggify($title) . '.md';
+    }
+    
+    /**
+     * Get path and file name 
+     * 
+     * @param string $title
+     * 
+     * @return string
+     */
+    public function pathname(string $title)
+    {
+        return $this->workspace->get() . DIRECTORY_SEPARATOR . $this->get($title);
     }
     
     /**
@@ -51,6 +64,7 @@ class Filename
      * Sluggify the title of the ADR
      * 
      * @param string $title
+     * 
      * @return string
      */
     private function sluggify(string $title) : string
