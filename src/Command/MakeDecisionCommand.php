@@ -14,7 +14,7 @@ use ADR\Filesystem\Workspace;
  * 
  * @author José Carlos <josecarlos@globtec.com.br>
  */
-class CreateAdrCommand extends Command
+class MakeDecisionCommand extends Command
 {
     /**
      * Configures the command
@@ -22,7 +22,7 @@ class CreateAdrCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('make:skeleton')
+            ->setName('make:decision')
             ->setDescription('Creates a new ADR')
             ->setHelp('This command allows you to create a new ADR')
             ->addArgument(

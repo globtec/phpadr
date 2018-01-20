@@ -8,13 +8,13 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 use ADR\Filesystem;
 
-class CreateAdrCommandTest extends TestCase
+class MakeDecisionCommandTest extends TestCase
 {
     private $command;
 
     public function setUp()
     {
-        $this->command = new CreateAdrCommand();
+        $this->command = new MakeDecisionCommand();
     }
 
     public function testInstanceOfCommand()
@@ -24,7 +24,7 @@ class CreateAdrCommandTest extends TestCase
 
     public function testName()
     {
-        $this->assertEquals('make:skeleton', $this->command->getName());
+        $this->assertEquals('make:decision', $this->command->getName());
     }
 
     public function testDescription()

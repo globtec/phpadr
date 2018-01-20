@@ -4,9 +4,9 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
-use ADR\Command\CreateAdrCommand;
+use ADR\Command\MakeDecisionCommand;
 
 $app = new Application('Lightweight Architecture Decision Records Tools');
 
-$app->add(new CreateAdrCommand());
+$app->add(new MakeDecisionCommand());
 $app->run();
