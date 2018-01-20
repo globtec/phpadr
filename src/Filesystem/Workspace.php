@@ -2,6 +2,7 @@
 
 namespace ADR\Filesystem;
 
+use FilesystemIterator;
 use RuntimeException;
 
 /**
@@ -27,6 +28,28 @@ class Workspace
     }
     
     /**
+     * Returns directory name
+     *
+     * @return string The directory name
+     */
+    public function get() : string
+    {
+        return $this->directory;
+    }
+    
+    /**
+     * Count the number of ADRs in workspace
+     * 
+     * @return int The number of ADRs in workspace
+     */
+    public function count() : int
+    {
+        $iterator = new FilesystemIterator($this->get(), FilesystemIterator::SKIP_DOTS);
+        
+        return iterator_count($iterator);
+    }
+    
+    /**
      * Sets workspace that store the ADRs
      * 
      * @param string $directory The workspace that store the ADRs
@@ -40,16 +63,6 @@ class Workspace
         }
         
         $this->directory = $directory;
-    }
-    
-    /**
-     * Returns directory name
-     * 
-     * @return string The directory name
-     */
-    public function get() : string
-    {
-        return $this->directory;
     }
 
     /**

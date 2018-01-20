@@ -24,4 +24,15 @@ class WorkspaceTest extends TestCase
         
         new Workspace('/path/to/docs/arch');
     }
+    
+    public function testCount()
+    {
+        $vfs = vfsStream::setup();
+        $vfs->addChild(vfsStream::newFile('001-foo.md'));
+        $vfs->addChild(vfsStream::newFile('002-bar.md'));
+        
+        $workspace = new Workspace($vfs->url());
+        
+        $this->assertEquals(2, $workspace->count());
+    }
 }
