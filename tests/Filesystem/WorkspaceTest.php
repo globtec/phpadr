@@ -4,30 +4,24 @@ namespace ADR\Filesystem;
 
 use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
+use RuntimeException;
 
 class WorkspaceTest extends TestCase
 {
-    private $workspace;
-    
-    public function setUp()
-    {
-        $this->workspace = new Workspace();
-    }
-    
     public function testSetWithSuccess()
     {
-        $directory = vfsStream::setup()->url();
+        $directory = vfsStream::setup()->url() . '/docs/arch';
         
-        $this->workspace->set($directory);
+        $workspace = new Workspace($directory);
         
-        $this->assertEquals($directory, $this->workspace->get());
-        $this->assertDirectoryIsWritable($this->workspace->get());
+        $this->assertEquals($directory, $workspace->get());
+        $this->assertDirectoryIsWritable($workspace->get());
     }
     
     public function testSetWithFailure()
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         
-        $this->workspace->set('/path/to/docs/arch');
+        new Workspace('/path/to/docs/arch');
     }
 }

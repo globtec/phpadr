@@ -10,27 +10,12 @@ use Symfony\Component\Console\Input\InputOption;
 use ADR\Filesystem\Workspace;
 
 /**
- * Class of the command line interface to create ADR
+ * Command to make ADRs
  * 
  * @author José Carlos <josecarlos@globtec.com.br>
  */
 class CreateAdrCommand extends Command
 {
-    /**
-     * @var Workspace
-     */
-    private $workspace;
-    
-    /**
-     * @param Workspace $workspace
-     */
-    public function __construct(Workspace $workspace)
-    {
-        $this->workspace = $workspace;
-        
-        parent::__construct();
-    }
-    
     /**
      * Configures the command
      */
@@ -62,8 +47,7 @@ class CreateAdrCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        //TODO: Create a new ADR file
-        $this->workspace->set($input->getOption('directory'));
+        $workspace = new Workspace($input->getOption('directory'));
 
         $output->writeln('ADR file successfully generated');
     }

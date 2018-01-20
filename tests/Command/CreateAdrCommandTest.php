@@ -11,14 +11,10 @@ use ADR\Filesystem;
 class CreateAdrCommandTest extends TestCase
 {
     private $command;
-    
-    private $workspace;
 
     public function setUp()
     {
-        $this->workspace = $this->getMockBuilder(Filesystem\Workspace::class)->getMock();
-        
-        $this->command = new CreateAdrCommand($this->workspace);
+        $this->command = new CreateAdrCommand();
     }
 
     public function testInstanceOfCommand()
@@ -77,10 +73,6 @@ class CreateAdrCommandTest extends TestCase
     public function testExecute()
     {
         (new Application())->add($this->command);
-        
-        $this->workspace->expects($this->once())
-            ->method('set')
-            ->with($this->equalTo('docs'));
         
         $tester = new CommandTester($this->command);
 

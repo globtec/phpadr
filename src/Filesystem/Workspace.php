@@ -2,8 +2,10 @@
 
 namespace ADR\Filesystem;
 
+use RuntimeException;
+
 /**
- * Class that defines workspace where the ADRs will be stored
+ * Represents the workspace that store the ADRs
  *
  * @author José Carlos <josecarlos@globtec.com.br>
  */
@@ -15,11 +17,23 @@ class Workspace
     private $directory;
     
     /**
-     * Set directory
+     * @param string $directory The directory name
+     *
+     * @throws RuntimeException
+     */
+    public function __construct(string $directory)
+    {
+        $this->set($directory);
+    }
+    
+    /**
+     * Sets workspace that store the ADRs
      * 
      * @param string $directory The workspace that store the ADRs
+     * 
+     * @throws RuntimeException
      */
-    public function set(string $directory)
+    private function set(string $directory)
     {
         if (! file_exists($directory)) {
             $this->make($directory);
@@ -29,9 +43,9 @@ class Workspace
     }
     
     /**
-     * Get directory
+     * Returns directory name
      * 
-     * @return string
+     * @return string The directory name
      */
     public function get() : string
     {
@@ -43,7 +57,7 @@ class Workspace
      * 
      * @param string $directory The directory path
      * 
-     * @throws \RuntimeException
+     * @throws RuntimeException When the permissions prevent creating the directory
      */
     private function make(string $directory)
     {
@@ -54,11 +68,11 @@ class Workspace
         }
          
         if (! is_writable($parent)) {
-            throw new \RuntimeException("The parent directory isn't writable: $parent");
+            throw new RuntimeException("The parent directory isn't writable: $parent");
         }
         
         if (! mkdir($directory, 0777, true)) {
-            throw new \RuntimeException("Illegal directory: $directory");
+            throw new RuntimeException("Illegal directory: $directory");
         }
     }
 }
