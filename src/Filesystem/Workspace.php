@@ -4,6 +4,7 @@ namespace ADR\Filesystem;
 
 use FilesystemIterator;
 use RuntimeException;
+use ADR\Domain\DecisionRecord;
 
 /**
  * Represents the workspace that store the ADRs
@@ -50,6 +51,16 @@ class Workspace
     }
     
     /**
+     * Write a Architecture Decision to a markdown file
+     * 
+     * @param DecisionRecord $record
+     */
+    public function add(DecisionRecord $record)
+    {
+        file_put_contents($this->filename($record), $record->output());
+    }
+    
+    /**
      * Sets workspace that store the ADRs
      * 
      * @param string $directory The workspace that store the ADRs
@@ -87,5 +98,17 @@ class Workspace
         if (! mkdir($directory, 0777, true)) {
             throw new RuntimeException("Illegal directory: $directory");
         }
+    }
+    
+    /**
+     * Returns file name 
+     * 
+     * @param RecordDecision $record
+     * 
+     * @return string The filename
+     */
+    private function filename(DecisionRecord $record) : string
+    {
+        return $this->get() . DIRECTORY_SEPARATOR . $record->name();
     }
 }

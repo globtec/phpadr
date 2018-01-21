@@ -7,6 +7,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 use ADR\Filesystem;
+use org\bovigo\vfs\vfsStream;
 
 class MakeDecisionCommandTest extends TestCase
 {
@@ -72,6 +73,8 @@ class MakeDecisionCommandTest extends TestCase
     
     public function testExecute()
     {
+        $vfs = vfsStream::setup();
+        
         (new Application())->add($this->command);
         
         $tester = new CommandTester($this->command);
@@ -79,7 +82,7 @@ class MakeDecisionCommandTest extends TestCase
         $tester->execute([
             'command'     => $this->command->getName(), 
             'title'       => 'Foo',
-            '--directory' => 'docs'
+            '--directory' => $vfs->url(),
         ]);
         
         $this->assertRegexp('/ADR file successfully generated/', $tester->getDisplay());

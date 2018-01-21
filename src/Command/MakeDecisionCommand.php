@@ -8,6 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use ADR\Filesystem\Workspace;
+use ADR\Domain\DecisionRecord;
 
 /**
  * Command to make ADRs
@@ -47,8 +48,19 @@ class MakeDecisionCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $workspace = new Workspace($input->getOption('directory'));
-
-        $output->writeln('ADR file successfully generated');
+        try {
+        
+            $record = new DecisionRecord();
+            
+            $workspace = new Workspace($input->getOption('directory'));
+            $workspace->add($record);
+    
+            $output->writeln('ADR file successfully generated');
+        
+        } catch (Exception $e) {
+            
+            $output->writeln($e->getMessage());
+        
+        }
     }
 }

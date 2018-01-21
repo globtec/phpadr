@@ -5,6 +5,7 @@ namespace ADR\Filesystem;
 use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
 use RuntimeException;
+use ADR\Domain\DecisionRecord;
 
 class WorkspaceTest extends TestCase
 {
@@ -34,5 +35,19 @@ class WorkspaceTest extends TestCase
         $workspace = new Workspace($vfs->url());
         
         $this->assertEquals(2, $workspace->count());
+    }
+    
+    public function testAdd()
+    {
+        $vfs = vfsStream::setup();
+        
+        $record = $this->getMockBuilder(DecisionRecord::class)->getMock();
+        $record->expects($this->once())->method('name')->willReturn('001-foo.md');
+        $record->expects($this->once())->method('output');
+        
+        $workspace = new Workspace($vfs->url());
+        $workspace->add($record);
+        
+        $this->assertFileExists($vfs->url() . '/001-foo.md');
     }
 }
