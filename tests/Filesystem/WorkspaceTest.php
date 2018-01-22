@@ -41,8 +41,11 @@ class WorkspaceTest extends TestCase
     {
         $vfs = vfsStream::setup();
         
-        $record = $this->getMockBuilder(DecisionRecord::class)->getMock();
-        $record->expects($this->once())->method('name')->willReturn('001-foo.md');
+        $record = $this->getMockBuilder(DecisionRecord::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        
+        $record->expects($this->once())->method('filename')->willReturn('001-foo.md');
         $record->expects($this->once())->method('output');
         
         $workspace = new Workspace($vfs->url());

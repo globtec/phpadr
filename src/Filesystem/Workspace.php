@@ -101,7 +101,7 @@ class Workspace
     }
     
     /**
-     * Returns file name 
+     * Returns filename 
      * 
      * @param RecordDecision $record
      * 
@@ -109,6 +109,6 @@ class Workspace
      */
     private function filename(DecisionRecord $record) : string
     {
-        return $this->get() . DIRECTORY_SEPARATOR . $record->name();
+        return $this->get() . DIRECTORY_SEPARATOR . $record->filename();
     }
 }
