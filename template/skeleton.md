@@ -1,4 +1,4 @@
-# ADR <sequence>: <title>
+# <sequence>. <title>
 
 Date: <date>
 
