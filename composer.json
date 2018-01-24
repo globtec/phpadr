@@ -2,7 +2,13 @@
     "name": "globtec/phpadr",
     "description": "A PHP based command-line interface tool for working with ADR",
     "type": "library",
-    "keywords": ["AD", "ADR"],
+    "keywords": [
+        "adr",
+        "architecture-decision-records",
+        "architecture-decision",
+        "documentation",
+        "agility"
+    ],
     "authors": [
         {
             "name": "José Carlos",
@@ -10,6 +16,7 @@
         }
     ],
     "require": {
+        "php": "^7.1.3",
         "symfony/console": "^4.0"
     },
     "require-dev": {
