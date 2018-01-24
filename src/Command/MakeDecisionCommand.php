@@ -50,24 +50,16 @@ class MakeDecisionCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        try {
-            
-            $workspace = new Workspace($input->getOption('directory'));
-            $sequence = new Sequence($workspace);
-            
-            $content = new DecisionContent(
-                $sequence->next(),
-                $input->getArgument('title')
-            );
+        $workspace = new Workspace($input->getOption('directory'));
+        $sequence = new Sequence($workspace);
         
-            $workspace->add(new DecisionRecord($content));
+        $content = new DecisionContent(
+            $sequence->next(),
+            $input->getArgument('title')
+        );
     
-            $output->writeln('ADR file successfully generated');
+        $workspace->add(new DecisionRecord($content));
         
-        } catch (Exception $e) {
-            
-            $output->writeln($e->getMessage());
-        
-        }
+        $output->writeln('<info>ADR file successfully generated</info>');
     }
 }

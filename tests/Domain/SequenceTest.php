@@ -4,7 +4,7 @@ namespace ADR\Domain;
 
 use PHPUnit\Framework\TestCase;
 use ADR\Filesystem\Workspace;
-use DomainException;
+use LogicException;
 
 class SequenceTest extends TestCase
 {
@@ -28,7 +28,7 @@ class SequenceTest extends TestCase
     
     public function testNextWithFailure()
     {
-        $this->expectException(DomainException::class);
+        $this->expectException(LogicException::class);
         
         $this->workspace->expects($this->once())->method('count')->willReturn(999);
         

@@ -2,8 +2,8 @@
 
 namespace ADR\Domain;
 
+use Symfony\Component\Console\Exception\LogicException;
 use ADR\Filesystem\Workspace;
-use DomainException;
 
 /**
  * Represents the numbered sequentially and monotonically
@@ -39,7 +39,7 @@ class Sequence
         $sequence = $this->workspace->count() + 1;
         
         if ($sequence > self::MAX_VALUE) {
-            throw new DomainException('Next value exceeds the max value and cannot be used');
+            throw new LogicException('Next value exceeds the max value and cannot be used');
         }
         
         return $sequence;

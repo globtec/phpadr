@@ -2,9 +2,9 @@
 
 namespace ADR\Filesystem;
 
-use FilesystemIterator;
-use RuntimeException;
+use Symfony\Component\Console\Exception\RuntimeException;
 use ADR\Domain\DecisionRecord;
+use FilesystemIterator;
 
 /**
  * Represents the workspace that store the ADRs

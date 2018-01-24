@@ -2,7 +2,7 @@
 
 namespace ADR\Domain;
 
-use InvalidArgumentException;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 
 /**
  * Representes value object of the architecture decision
