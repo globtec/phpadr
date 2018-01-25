@@ -22,7 +22,7 @@ class DecisionRecordTest extends TestCase
         
         $record = new DecisionRecord($this->content);
         
-        $this->assertEquals('001-foo.md', $record->filename());
+        $this->assertEquals('0001-foo.md', $record->filename());
     }
     
     public function testOutput()

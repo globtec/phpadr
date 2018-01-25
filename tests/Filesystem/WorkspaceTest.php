@@ -29,8 +29,8 @@ class WorkspaceTest extends TestCase
     public function testCount()
     {
         $vfs = vfsStream::setup();
-        $vfs->addChild(vfsStream::newFile('001-foo.md'));
-        $vfs->addChild(vfsStream::newFile('002-bar.md'));
+        $vfs->addChild(vfsStream::newFile('0001-foo.md'));
+        $vfs->addChild(vfsStream::newFile('0002-bar.md'));
         
         $workspace = new Workspace($vfs->url());
         
@@ -45,12 +45,12 @@ class WorkspaceTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
         
-        $record->expects($this->once())->method('filename')->willReturn('001-foo.md');
+        $record->expects($this->once())->method('filename')->willReturn('0001-foo.md');
         $record->expects($this->once())->method('output');
         
         $workspace = new Workspace($vfs->url());
         $workspace->add($record);
         
-        $this->assertFileExists($vfs->url() . '/001-foo.md');
+        $this->assertFileExists($vfs->url() . '/0001-foo.md');
     }
 }

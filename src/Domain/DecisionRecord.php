@@ -17,6 +17,13 @@ class DecisionRecord
     const EXTENSION = '.md';
     
     /**
+     * Length of ADRs name number
+     * 
+     * @var int
+     */
+    const NUMBER_LENGTH = 4;
+    
+    /**
      * @var DecisionContent
      */
     private $content;
@@ -63,7 +70,7 @@ class DecisionRecord
      */
     private function sequence() : string
     {
-        return str_pad($this->content->getId(), 3, '0', STR_PAD_LEFT);
+        return str_pad($this->content->getId(), self::NUMBER_LENGTH, '0', STR_PAD_LEFT);
     }
     
     /**
