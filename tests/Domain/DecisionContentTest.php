@@ -8,9 +8,9 @@ use InvalidArgumentException;
 class DecisionContentTest extends TestCase
 {
     /**
-     * @dataProvider providerTestInstanceWithSuccessful
+     * @dataProvider providerTestInstanceSuccessfully
      */
-    public function testInstanceWithSuccessful($status)
+    public function testInstanceSuccessfully($status)
     {
         $content = new DecisionContent(1, 'Foo', $status);
         
@@ -35,7 +35,7 @@ class DecisionContentTest extends TestCase
         new DecisionContent(1, 'Foo', 'Superseded');
     }
     
-    public function providerTestInstanceWithSuccessful()
+    public function providerTestInstanceSuccessfully()
     {
         return [
             ['Proposed'],
