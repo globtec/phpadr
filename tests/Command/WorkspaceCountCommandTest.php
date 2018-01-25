@@ -54,7 +54,7 @@ class WorkspaceCountCommandTest extends TestCase
         $this->assertEquals('docs/arch', $option->getDefault());
     }
     
-    public function testExecuteCountZero()
+    public function testExecute()
     {
         $vfs = vfsStream::setup();
         
