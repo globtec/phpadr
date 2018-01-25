@@ -17,22 +17,36 @@ class SequenceTest extends TestCase
             ->getMock();
     }
     
-    public function testNextWithSuccessful()
+    /**
+     * @dataProvider providerTestNextSuccessfully
+     */
+    public function testNextSuccessfully($count, $expected)
     {
-        $this->workspace->expects($this->once())->method('count')->willReturn(0);
-        
         $sequence = new Sequence($this->workspace);
         
-        $this->assertEquals(1, $sequence->next());
+        $this->workspace->expects($this->once())->method('count')->willReturn($count);
+        
+        $this->assertEquals($expected, $sequence->next());
     }
     
-    public function testNextWithFailure()
+    public function testNextFailure()
     {
         $this->expectException(LogicException::class);
         
-        $this->workspace->expects($this->once())->method('count')->willReturn(999);
+        $this->workspace->expects($this->once())->method('count')->willReturn(Sequence::MAX_VALUE);
         
         $sequence = new Sequence($this->workspace);
         $sequence->next();
+    }
+    
+    public function providerTestNextSuccessfully()
+    {
+        return [
+            [0, 1],
+            [10, 11],
+            [100, 101],
+            [999, 1000],
+            [1050, 1051],
+        ];
     }
 }

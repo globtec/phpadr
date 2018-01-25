@@ -12,7 +12,12 @@ use ADR\Filesystem\Workspace;
  */
 class Sequence
 {
-    const MAX_VALUE = 999;
+    /**
+     * Max value to sequence
+     * 
+     * @var integer
+     */
+    const MAX_VALUE = 9999;
     
     /**
      * @var Workspace
