@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
-use ADR\Filesystem;
 use org\bovigo\vfs\vfsStream;
 
 class MakeDecisionCommandTest extends TestCase
@@ -85,6 +84,6 @@ class MakeDecisionCommandTest extends TestCase
             '--directory' => $vfs->url(),
         ]);
         
-        $this->assertRegexp('/ADR file successfully generated/', $tester->getDisplay());
+        $this->assertRegexp('/ADR created successfully/', $tester->getDisplay());
     }
 }

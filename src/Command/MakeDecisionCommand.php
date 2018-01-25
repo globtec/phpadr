@@ -52,14 +52,11 @@ class MakeDecisionCommand extends Command
     {
         $workspace = new Workspace($input->getOption('directory'));
         $sequence = new Sequence($workspace);
+        $content = new DecisionContent($sequence->next(), $input->getArgument('title'));
+        $record = new DecisionRecord($content);
         
-        $content = new DecisionContent(
-            $sequence->next(),
-            $input->getArgument('title')
-        );
-    
-        $workspace->add(new DecisionRecord($content));
+        $workspace->add($record);
         
-        $output->writeln('<info>ADR file successfully generated</info>');
+        $output->writeln('<info>ADR created successfully</info>');
     }
 }
