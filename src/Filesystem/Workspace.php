@@ -5,6 +5,7 @@ namespace ADR\Filesystem;
 use Symfony\Component\Console\Exception\RuntimeException;
 use ADR\Domain\DecisionRecord;
 use FilesystemIterator;
+use SplFileInfo;
 
 /**
  * Represents the workspace that store the ADRs
@@ -45,9 +46,7 @@ class Workspace
      */
     public function count() : int
     {
-        $iterator = new FilesystemIterator($this->get(), FilesystemIterator::SKIP_DOTS);
-        
-        return iterator_count($iterator);
+        return count($this->records());
     }
     
     /**
@@ -58,6 +57,27 @@ class Workspace
     public function add(DecisionRecord $record)
     {
         file_put_contents($this->filename($record), $record->output());
+    }
+    
+    /**
+     * Returns array containing name of the ADRs
+     * 
+     * @return array
+     */
+    public function records() : array
+    {
+        $records = [];
+        
+        $iterator = new FilesystemIterator($this->get(), FilesystemIterator::SKIP_DOTS);
+        
+        /* @var $fileinfo SplFileInfo */
+        foreach ($iterator as $fileinfo) {
+            if ($this->isValidFilename($fileinfo)) {
+                array_push($records, $fileinfo->getFilename());
+            }
+        }
+    
+        return $records;
     }
     
     /**
@@ -110,5 +130,23 @@ class Workspace
     private function filename(DecisionRecord $record) : string
     {
         return $this->get() . DIRECTORY_SEPARATOR . $record->filename();
+    }
+    
+    /**
+     * Check if filename is valid to ADR
+     * 
+     * @param SplFileInfo $fileinfo
+     * 
+     * @return bool
+     */
+    private function isValidFilename(SplFileInfo $fileinfo) : bool
+    {
+        if (! $fileinfo->isFile()) {
+            return false;
+        }
+        
+        $pattern = '/^\d{' . DecisionRecord::NUMBER_LENGTH . '}-[a-z\-]+\\' . DecisionRecord::EXTENSION . '$/';
+        
+        return false !== preg_match($pattern, $fileinfo->getFilename());
     }
 }
