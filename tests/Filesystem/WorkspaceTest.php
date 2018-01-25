@@ -9,7 +9,7 @@ use ADR\Domain\DecisionRecord;
 
 class WorkspaceTest extends TestCase
 {
-    public function testSetWithSuccess()
+    public function testSetSuccessfully()
     {
         $directory = vfsStream::setup()->url() . '/docs/arch';
         
@@ -19,7 +19,7 @@ class WorkspaceTest extends TestCase
         $this->assertDirectoryIsWritable($workspace->get());
     }
     
-    public function testSetWithFailure()
+    public function testSetFailure()
     {
         $this->expectException(RuntimeException::class);
         
@@ -29,10 +29,13 @@ class WorkspaceTest extends TestCase
     public function testCount()
     {
         $vfs = vfsStream::setup();
-        $vfs->addChild(vfsStream::newFile('0001-foo.md'));
-        $vfs->addChild(vfsStream::newFile('0002-bar.md'));
         
         $workspace = new Workspace($vfs->url());
+
+        $this->assertEquals(0, $workspace->count());
+        
+        $vfs->addChild(vfsStream::newFile('0001-foo.md'));
+        $vfs->addChild(vfsStream::newFile('0002-bar.md'));
         
         $this->assertEquals(2, $workspace->count());
     }
