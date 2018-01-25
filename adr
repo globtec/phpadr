@@ -5,8 +5,10 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 use ADR\Command\MakeDecisionCommand;
+use ADR\Command\WorkspaceCountCommand;
 
 $app = new Application('Lightweight Architecture Decision Records Tools');
 
 $app->add(new MakeDecisionCommand());
+$app->add(new WorkspaceCountCommand());
 $app->run();
