@@ -2,6 +2,7 @@
     "name": "globtec/phpadr",
     "description": "A PHP based command-line interface tool for working with ADR",
     "type": "library",
+    "license": "MIT",
     "keywords": [
         "adr",
         "architecture-decision-records",
