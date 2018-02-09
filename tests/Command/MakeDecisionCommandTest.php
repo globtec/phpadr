@@ -40,8 +40,9 @@ class MakeDecisionCommandTest extends TestCase
     public function testArguments()
     {
         $this->assertTrue($this->command->getDefinition()->hasArgument('title'));
+        $this->assertTrue($this->command->getDefinition()->hasArgument('status'));
         
-        $this->assertCount(1, $this->command->getDefinition()->getArguments());
+        $this->assertCount(2, $this->command->getDefinition()->getArguments());
     }
     
     public function testArgumentTitle()
@@ -51,6 +52,15 @@ class MakeDecisionCommandTest extends TestCase
         $this->assertTrue($argument->isRequired());
         $this->assertEquals('The title of the ADR', $argument->getDescription());
         $this->assertNull($argument->getDefault());
+    }
+    
+    public function testArgumentStatus()
+    {
+        $argument = $this->command->getDefinition()->getArgument('status');
+        
+        $this->assertFalse($argument->isRequired());
+        $this->assertEquals('The status of the ADR, avaliable options: [Proposed, Accepted, Rejected, Deprecated]', $argument->getDescription());
+        $this->assertEquals('Accepted', $argument->getDefault());
     }
     
     public function testOptions()

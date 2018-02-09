@@ -24,6 +24,13 @@ class MakeDecisionCommand extends Command
      */
     protected function configure()
     {
+        $options = [
+            DecisionContent::STATUS_PROPOSED,
+            DecisionContent::STATUS_ACCEPTED,
+            DecisionContent::STATUS_REJECTED,
+            DecisionContent::STATUS_DEPRECATED,
+        ];
+        
         $this
             ->setName('make:decision')
             ->setDescription('Creates a new ADR')
@@ -32,6 +39,15 @@ class MakeDecisionCommand extends Command
                 'title',
                 InputArgument::REQUIRED,
                 'The title of the ADR'
+            )
+            ->addArgument(
+                'status',
+                InputArgument::OPTIONAL,
+                sprintf(
+                   'The status of the ADR, avaliable options: [%s]',
+                   implode(', ', $options)
+                ),
+                DecisionContent::STATUS_ACCEPTED
             )
             ->addOption(
                 'directory',
@@ -52,7 +68,7 @@ class MakeDecisionCommand extends Command
     {
         $workspace = new Workspace($input->getOption('directory'));
         $sequence = new Sequence($workspace);
-        $content = new DecisionContent($sequence->next(), $input->getArgument('title'));
+        $content = new DecisionContent($sequence->next(), $input->getArgument('title'), $input->getArgument('status'));
         $record = new DecisionRecord($content);
         
         $workspace->add($record);
