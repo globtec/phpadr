@@ -8,7 +8,7 @@ use ADR\Command\MakeDecisionCommand;
 use ADR\Command\WorkspaceCountCommand;
 use ADR\Command\WorkspaceListCommand;
 
-$app = new Application('Lightweight Architecture Decision Records Tools');
+$app = new Application('PHP ADR Tools');
 
 $app->add(new MakeDecisionCommand());
 $app->add(new WorkspaceCountCommand());
