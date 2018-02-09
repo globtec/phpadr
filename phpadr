@@ -1,7 +1,27 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+$autoloaders = [
+    __DIR__ . '/../../autoload.php',
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/vendor/autoload.php',
+];
+
+foreach ($autoloaders as $filename) {
+    if (file_exists($filename)) {
+        define('AUTOLOAD', $filename);
+        break;
+    }
+}
+
+unset($filename);
+
+if (! defined('AUTOLOAD')) {
+    fwrite(STDERR, 'Dependencies not found, be sure to run `composer install`. See https://getcomposer.org to get Composer');
+    die(1);
+}
+
+require AUTOLOAD;
 
 use Symfony\Component\Console\Application;
 use ADR\Command\MakeDecisionCommand;
@@ -13,4 +33,5 @@ $app = new Application('PHP ADR Tools');
 $app->add(new MakeDecisionCommand());
 $app->add(new WorkspaceCountCommand());
 $app->add(new WorkspaceListCommand());
+
 $app->run();
