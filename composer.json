@@ -29,5 +29,8 @@
             "ADR\\": "src/"
         }
     },
+    "bin": [
+        "phpadr"
+    ],
     "minimum-stability": "dev"
 }
