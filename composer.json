@@ -30,7 +30,7 @@
         }
     },
     "bin": [
-        "phpadr"
+        "bin/phpadr"
     ],
     "minimum-stability": "dev"
 }
