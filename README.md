@@ -4,7 +4,7 @@ A PHP based command-line interface tool for working with ADR ([Architecture Deci
 
 ## Requirements
 
-Requires PHP version 7.1 or newer
+Requires PHP version 7.1.3 or newer
 
 ##  Installation
 
