@@ -26,29 +26,35 @@ After of install this project you may execute the binary `phpadr` in your termin
 ./vendor/bin/phpadr
 ```
 
-To view a list of all avaliable PHPADR commands, you may use the `list` command:
+If to execute the command above, it will be showd a list of all avaliable tool commands.
 
-```
-./vendor/bin/phpadr list
-```
+By default the records will be stored in `docs/arch`, to change this workspace use the option `--directory` with the path of the new workspace.
 
-To create a new ADR, you may use the `make:decision` command:
+### Create a new ADR
+
+You may use the `make:decision` command:
 
 ```
 ./vendor/bin/phpadr make:decision <title> [<status="Accepted">] [--directory="docs/arch"]
 ```
 
-To count the ADRs, you may use the `workspace:count` command:
+### Count the ADRs
+
+You may use the `workspace:count` command:
 
 ```
 ./vendor/bin/phpadr workspace:count [--directory="docs/arch"]
 ```
 
-To list the ADRs, you may use the `workspace:list` command:
+### List the ADRs
+
+You may use the `workspace:list` command:
 
 ```
 ./vendor/bin/phpadr workspace:list [--directory="docs/arch"]
 ```
+
+### Help
 
 For more help execute the following command:
 
