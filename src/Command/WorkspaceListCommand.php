@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use ADR\Filesystem\Workspace;
 
 /**
@@ -50,7 +51,11 @@ class WorkspaceListCommand extends Command
         if (empty($records)) {
             $output->writeln('<info>Workspace is empty</info>');
         } else {
-            $output->writeln($records);
+            $style = new SymfonyStyle($input, $output);
+            $style->table(
+                ['Filename'], 
+                array_map(function ($record) { return [$record]; }, $records)
+            );
         }
     }
 }

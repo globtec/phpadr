@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use ADR\Filesystem\Workspace;
 
 /**
@@ -41,8 +42,9 @@ class WorkspaceCountCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $style = new SymfonyStyle($input, $output);
         $workspace = new Workspace($input->getOption('directory'));
-        
-        $output->writeln(sprintf('<info>%d ADRs</info>', $workspace->count()));
+
+        $style->table(['Count'], [[$workspace->count()]]);
     }
 }

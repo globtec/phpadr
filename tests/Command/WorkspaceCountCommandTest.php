@@ -68,13 +68,13 @@ class WorkspaceCountCommandTest extends TestCase
         $tester = new CommandTester($this->command);
         $tester->execute($input);
         
-        $this->assertRegexp('/0 ADRs/', $tester->getDisplay());
+        $this->assertRegexp('/0/', $tester->getDisplay());
         
         $vfs->addChild(vfsStream::newFile('0001-foo.md'));
         $vfs->addChild(vfsStream::newFile('0002-bar.md'));
         
         $tester->execute($input);
         
-        $this->assertRegexp('/2 ADRs/', $tester->getDisplay());
+        $this->assertRegexp('/2/', $tester->getDisplay());
     }
 }
