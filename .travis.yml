@@ -1,0 +1,18 @@
+language: php
+
+php:
+    - 7.1.3
+
+before_install:
+    - composer self-update
+    - composer install
+
+before_script:
+    - mkdir -p build/logs
+    - ls -la
+
+script:
+    - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
+after_success:
+    - ./vendor/bin/php-coveralls -v
