@@ -18,7 +18,7 @@ Requires PHP version 7.1.3 or newer
 You can install this tool using the [Composer](https://getcomposer.org/), execute the following command.
 
 ```
-composer require globtec/phpadr --dev dev-master
+composer require globtec/phpadr --dev
 ```
 
 ## Usage
