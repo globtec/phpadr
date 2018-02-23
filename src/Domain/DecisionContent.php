@@ -31,13 +31,14 @@ class DecisionContent
     const STATUS_ACCEPTED = 'Accepted';
     
     /**
-     * If a later ADR changes or reverses a decision
+     * If a later ADR changes or reverses a decision to declined
      * 
      * @var string
      */
     const STATUS_REJECTED = 'Rejected';
     
     /**
+     * If a later ADR changes or reverses a decision to deprecated
      * 
      * @var string
      */
