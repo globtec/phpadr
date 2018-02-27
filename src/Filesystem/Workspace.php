@@ -76,7 +76,7 @@ class Workspace
                 array_push($records, $fileinfo->getFilename());
             }
         }
-    
+        
         return $records;
     }
     
@@ -147,6 +147,6 @@ class Workspace
         
         $pattern = '/^\d{' . DecisionRecord::NUMBER_LENGTH . '}-[a-z\-]+\\' . DecisionRecord::EXTENSION . '$/';
         
-        return false !== preg_match($pattern, $fileinfo->getFilename());
+        return (boolean) preg_match($pattern, $fileinfo->getFilename());
     }
 }

@@ -4,8 +4,8 @@ namespace ADR\Filesystem;
 
 use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
-use RuntimeException;
 use ADR\Domain\DecisionRecord;
+use RuntimeException;
 
 class WorkspaceTest extends TestCase
 {
@@ -36,6 +36,8 @@ class WorkspaceTest extends TestCase
         
         $vfs->addChild(vfsStream::newFile('0001-foo.md'));
         $vfs->addChild(vfsStream::newFile('0002-bar.md'));
+        $vfs->addChild(vfsStream::newFile('any-file.md'));
+        $vfs->addChild(vfsStream::newDirectory('any-directory'));
         
         $this->assertEquals(2, $workspace->count());
     }
