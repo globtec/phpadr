@@ -111,7 +111,7 @@ class DecisionContent
      *
      * @throws InvalidArgumentException
      */
-    private function setTitle(string $title)
+    private function setTitle(string $title): void
     {
         if (strlen($title) > self::TITLE_MAX_LENGTH) {
             $message = sprintf(
@@ -132,7 +132,7 @@ class DecisionContent
      *
      * @throws InvalidArgumentException
      */
-    private function setStatus(string $status)
+    private function setStatus(string $status): void
     {
         $map = [
             self::STATUS_PROPOSED,

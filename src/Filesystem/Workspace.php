@@ -54,7 +54,7 @@ class Workspace
      * 
      * @param DecisionRecord $record
      */
-    public function add(DecisionRecord $record)
+    public function add(DecisionRecord $record): void
     {
         file_put_contents($this->filename($record), $record->output());
     }
@@ -87,7 +87,7 @@ class Workspace
      * 
      * @throws RuntimeException
      */
-    private function set(string $directory)
+    private function set(string $directory): void
     {
         if (! file_exists($directory)) {
             $this->make($directory);
@@ -103,7 +103,7 @@ class Workspace
      * 
      * @throws RuntimeException When the permissions prevent creating the directory
      */
-    private function make(string $directory)
+    private function make(string $directory): void
     {
         $parent = dirname($directory);
         
