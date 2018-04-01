@@ -115,7 +115,7 @@ class DecisionContent
     {
         if (strlen($title) > self::TITLE_MAX_LENGTH) {
             $message = sprintf(
-                'The title must be less than %d characters',
+                'The title must be less than or equal to %d characters',
                 self::TITLE_MAX_LENGTH
             );
             
