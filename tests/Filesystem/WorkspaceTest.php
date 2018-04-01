@@ -36,10 +36,15 @@ class WorkspaceTest extends TestCase
         
         $vfs->addChild(vfsStream::newFile('0001-foo.md'));
         $vfs->addChild(vfsStream::newFile('0002-bar.md'));
+        $vfs->addChild(vfsStream::newFile('0003-baz-2.md'));
+        
+        $vfs->addChild(vfsStream::newFile('0004-snake_case.md'));
+        $vfs->addChild(vfsStream::newFile('0005-UPPERCASE.md'));
+        $vfs->addChild(vfsStream::newFile('0006-CamelCase.md'));
         $vfs->addChild(vfsStream::newFile('any-file.md'));
         $vfs->addChild(vfsStream::newDirectory('any-directory'));
         
-        $this->assertEquals(2, $workspace->count());
+        $this->assertEquals(3, $workspace->count());
     }
     
     public function testAdd()
