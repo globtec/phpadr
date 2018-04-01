@@ -79,7 +79,7 @@ class DecisionContent
      * 
      * @return int ID value
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -89,7 +89,7 @@ class DecisionContent
      * 
      * @return string The title
      */
-    public function getTitle() : string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -99,7 +99,7 @@ class DecisionContent
      * 
      * @return string The status
      */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->status;
     }

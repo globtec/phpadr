@@ -41,7 +41,7 @@ class DecisionRecord
      * 
      * @return string The file name
      */
-    public function filename() : string
+    public function filename(): string
     {
         return $this->sequence() . '-' . $this->slug() . self::EXTENSION;
     }
@@ -51,7 +51,7 @@ class DecisionRecord
      * 
      * @return string The content
      */
-    public function output() : string
+    public function output(): string
     {
         $vars = [
             '<sequence>' => $this->content->getId(),
@@ -68,7 +68,7 @@ class DecisionRecord
      * 
      * @return string The number sequentially
      */
-    private function sequence() : string
+    private function sequence(): string
     {
         return str_pad($this->content->getId(), self::NUMBER_LENGTH, '0', STR_PAD_LEFT);
     }
@@ -78,7 +78,7 @@ class DecisionRecord
      *
      * @return string
      */
-    private function slug() : string
+    private function slug(): string
     {
         $slugged = iconv('UTF-8', 'ASCII//TRANSLIT', $this->content->getTitle());
         $slugged = preg_replace('/[^-\/+|\w ]/', '', $slugged);
@@ -93,7 +93,7 @@ class DecisionRecord
      *
      * @return string
      */
-    private function template() : string
+    private function template(): string
     {
         ob_start();
         

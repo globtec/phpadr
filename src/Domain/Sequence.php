@@ -39,7 +39,7 @@ class Sequence
      * 
      * @return int The next value in a sequence
      */
-    public function next() : int
+    public function next(): int
     {
         $sequence = $this->workspace->count() + 1;
         

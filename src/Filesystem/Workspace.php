@@ -34,7 +34,7 @@ class Workspace
      *
      * @return string The directory name
      */
-    public function get() : string
+    public function get(): string
     {
         return $this->directory;
     }
@@ -44,7 +44,7 @@ class Workspace
      * 
      * @return int The number of ADRs in workspace
      */
-    public function count() : int
+    public function count(): int
     {
         return count($this->records());
     }
@@ -64,7 +64,7 @@ class Workspace
      * 
      * @return array
      */
-    public function records() : array
+    public function records(): array
     {
         $records = [];
         
@@ -127,7 +127,7 @@ class Workspace
      * 
      * @return string The filename
      */
-    private function filename(DecisionRecord $record) : string
+    private function filename(DecisionRecord $record): string
     {
         return $this->get() . DIRECTORY_SEPARATOR . $record->filename();
     }
@@ -139,7 +139,7 @@ class Workspace
      * 
      * @return bool
      */
-    private function isValidFilename(SplFileInfo $fileinfo) : bool
+    private function isValidFilename(SplFileInfo $fileinfo): bool
     {
         if (! $fileinfo->isFile()) {
             return false;
