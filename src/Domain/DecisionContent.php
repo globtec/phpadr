@@ -113,7 +113,7 @@ class DecisionContent
      */
     private function setTitle(string $title): void
     {
-        if (strlen($title) > self::TITLE_MAX_LENGTH) {
+        if ($this->isGreaterThanTitleMaxLenght($title)) {
             $message = sprintf(
                 'The title must be less than or equal to %d characters',
                 self::TITLE_MAX_LENGTH
@@ -152,5 +152,17 @@ class DecisionContent
         }
         
         $this->status = $status;
+    }
+    
+    /**
+     * Determines whether the title is greater than maximun length set
+     * 
+     * @param string $title
+     * 
+     * @return bool
+     */
+    private function isGreaterThanTitleMaxLenght(string $title): bool
+    {
+        return mb_strlen($title) > self::TITLE_MAX_LENGTH;
     }
 }
