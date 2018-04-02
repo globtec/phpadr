@@ -10,13 +10,13 @@ class DecisionContentTest extends TestCase
     /**
      * @dataProvider providerTestInstanceSuccessfully
      */
-    public function testInstanceSuccessfully($status)
+    public function testInstanceSuccessfully($input, $output)
     {
-        $content = new DecisionContent(1, 'Foo', $status);
+        $content = new DecisionContent(1, 'Foo', $input);
         
         $this->assertEquals(1, $content->getId());
         $this->assertEquals('Foo', $content->getTitle());
-        $this->assertEquals($status, $content->getStatus());
+        $this->assertEquals($output, $content->getStatus());
     }
     
     /**
@@ -38,10 +38,14 @@ class DecisionContentTest extends TestCase
     public function providerTestInstanceSuccessfully()
     {
         return [
-            ['Proposed'],
-            ['Accepted'],
-            ['Rejected'],
-            ['Deprecated'],
+            ['Proposed', 'Proposed'],
+            ['proposed', 'Proposed'],
+            ['Accepted', 'Accepted'],
+            ['accepted', 'Accepted'],
+            ['Rejected', 'Rejected'],
+            ['rejected', 'Rejected'],
+            ['Deprecated', 'Deprecated'],
+            ['deprecated', 'Deprecated'],
         ];
     }
     

@@ -134,24 +134,26 @@ class DecisionContent
      */
     private function setStatus(string $status): void
     {
-        $map = [
+        $statuses = [
             self::STATUS_PROPOSED,
             self::STATUS_ACCEPTED,
             self::STATUS_REJECTED,
             self::STATUS_DEPRECATED,
         ];
         
-        if (! in_array($status, $map)) {
+        $key = array_search(strtolower($status), array_map('strtolower', $statuses));
+        
+        if (false === $key) {
             $message = sprintf(
                 'Invalid status "%s". Available status: [%s]',
                 $status,
-                implode(', ', $map)
+                implode(', ', $statuses)
             );
             
             throw new InvalidArgumentException($message);
         }
         
-        $this->status = $status;
+        $this->status = $statuses[$key];
     }
     
     /**
