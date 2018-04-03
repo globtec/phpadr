@@ -35,7 +35,7 @@ class Sequence
     /**
      * Create sequence monotonically, numbers will not be reused
      * 
-     * @throws DomainException
+     * @throws LogicException
      * 
      * @return int The next value in a sequence
      */
