@@ -11,7 +11,8 @@ Architecture Decision Records (ADR) is a technique for capturing important archi
 
 ## Requirements
 
-Requires PHP version 7.1.3 or newer
+* Requires PHP version 7.1.3 or newer
+* Multibyte String extension
 
 ##  Installation
 
