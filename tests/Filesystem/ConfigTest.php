@@ -3,8 +3,8 @@
 namespace ADR\Filesystem;
 
 use org\bovigo\vfs\vfsStream;
-use RuntimeException;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 class ConfigTest extends TestCase
 {

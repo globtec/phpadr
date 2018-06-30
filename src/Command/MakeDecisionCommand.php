@@ -2,16 +2,16 @@
 
 namespace ADR\Command;
 
+use ADR\Domain\DecisionContent;
+use ADR\Domain\DecisionRecord;
+use ADR\Domain\Sequence;
 use ADR\Filesystem\Config;
+use ADR\Filesystem\Workspace;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
-use ADR\Filesystem\Workspace;
-use ADR\Domain\Sequence;
-use ADR\Domain\DecisionRecord;
-use ADR\Domain\DecisionContent;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Command to make ADRs

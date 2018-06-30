@@ -2,10 +2,10 @@
 
 namespace ADR\Filesystem;
 
-use Symfony\Component\Console\Exception\RuntimeException;
 use ADR\Domain\DecisionRecord;
 use FilesystemIterator;
 use SplFileInfo;
+use Symfony\Component\Console\Exception\RuntimeException;
 
 /**
  * Represents the workspace that store the ADRs
