@@ -5,7 +5,7 @@ namespace ADR\Domain;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 
 /**
- * Representes value object of the architecture decision
+ * Represents value object of the architecture decision
  * 
  * @author José Carlos <josecarlos@globtec.com.br>
  */
@@ -157,7 +157,7 @@ class DecisionContent
     }
     
     /**
-     * Determines whether the title is greater than maximun length set
+     * Determines whether the title is greater than maximum length set
      * 
      * @param string $title
      * 

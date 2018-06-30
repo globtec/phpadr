@@ -16,6 +16,6 @@ It will be used the [PHPUnit](https://phpunit.de/) as testing framework.
 
 ## Consequences
 
-Use unit testing for ensure that the code is working as expected and that changes don't break existing funcionality.
+Use unit testing for ensure that the code is working as expected and that changes don't break existing functionality.
 
 Allow to use Test-Driven Development (TDD) that is an evolutionary approach to development which combines test-first development.

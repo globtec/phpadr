@@ -59,7 +59,7 @@ class MakeDecisionCommandTest extends TestCase
         $argument = $this->command->getDefinition()->getArgument('status');
         
         $this->assertFalse($argument->isRequired());
-        $this->assertEquals('The status of the ADR, avaliable options: [Proposed, Accepted, Rejected, Deprecated]', $argument->getDescription());
+        $this->assertEquals('The status of the ADR, available options: [Proposed, Accepted, Rejected, Deprecated]', $argument->getDescription());
         $this->assertEquals('Accepted', $argument->getDefault());
     }
     

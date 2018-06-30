@@ -44,7 +44,7 @@ class MakeDecisionCommand extends Command
                 'status',
                 InputArgument::OPTIONAL,
                 sprintf(
-                   'The status of the ADR, avaliable options: [%s]',
+                   'The status of the ADR, available options: [%s]',
                    implode(', ', $options)
                 ),
                 DecisionContent::STATUS_ACCEPTED
