@@ -32,14 +32,14 @@ After of install this project you may execute the binary `phpadr` in your termin
 
 If to execute the command above, it will be showd a list of all avaliable tool commands.
 
-By default the records will be stored in `docs/arch`, to change this workspace use the option `--directory` with the path of the new workspace.
+By default the records will be stored in `docs/arch`, to change this workspace use the option `--config` with the path of the config file.
 
 ### Create a new ADR
 
 You may use the `make:decision` command:
 
 ```
-./vendor/bin/phpadr make:decision <title> [<status="Accepted">] [--directory="docs/arch"]
+./vendor/bin/phpadr make:decision <title> [<status="Accepted">] [--config="adr.yml"]
 ```
 
 ### Count the ADRs
@@ -47,7 +47,7 @@ You may use the `make:decision` command:
 You may use the `workspace:count` command:
 
 ```
-./vendor/bin/phpadr workspace:count [--directory="docs/arch"]
+./vendor/bin/phpadr workspace:count [--config="adr.yml"]
 ```
 
 ### List the ADRs
@@ -55,7 +55,7 @@ You may use the `workspace:count` command:
 You may use the `workspace:list` command:
 
 ```
-./vendor/bin/phpadr workspace:list [--directory="docs/arch"]
+./vendor/bin/phpadr workspace:list [--config="adr.yml"]
 ```
 
 ### Help
