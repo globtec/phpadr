@@ -123,7 +123,7 @@ class Workspace
     /**
      * Returns filename 
      * 
-     * @param RecordDecision $record
+     * @param DecisionRecord $record
      * 
      * @return string The filename
      */

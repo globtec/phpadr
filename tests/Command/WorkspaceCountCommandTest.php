@@ -10,6 +10,9 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class WorkspaceCountCommandTest extends TestCase
 {
+    /**
+     * @var WorkspaceCountCommand
+     */
     private $command;
     
     public function setUp()

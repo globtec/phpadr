@@ -10,6 +10,9 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class WorkspaceListCommandTest extends TestCase
 {
+    /**
+     * @var WorkspaceListCommand
+     */
     private $command;
     
     public function setUp()

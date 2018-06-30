@@ -10,6 +10,9 @@ use org\bovigo\vfs\vfsStream;
 
 class MakeDecisionCommandTest extends TestCase
 {
+    /**
+     * @var MakeDecisionCommand
+     */
     private $command;
 
     public function setUp()

@@ -2,12 +2,16 @@
 
 namespace ADR\Domain;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ADR\Filesystem\Workspace;
 use LogicException;
 
 class SequenceTest extends TestCase
 {
+    /**
+     * @var Workspace|MockObject
+     */
     private $workspace;
     
     public function setUp()

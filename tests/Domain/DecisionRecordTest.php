@@ -2,10 +2,14 @@
 
 namespace ADR\Domain;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class DecisionRecordTest extends TestCase
 {
+    /**
+     * @var DecisionContent|MockObject
+     */
     private $content;
     
     public function setUp()
