@@ -2,6 +2,7 @@
 
 namespace ADR\Command;
 
+use ADR\Filesystem\Config;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -50,11 +51,11 @@ class MakeDecisionCommand extends Command
                 DecisionContent::STATUS_ACCEPTED
             )
             ->addOption(
-                'directory',
+                'config',
                 null,
                 InputOption::VALUE_REQUIRED,
-                'Workspace that store the ADRs',
-                'docs/arch'
+                'Config file',
+                'adr.yml'
             );
     }
 
@@ -66,10 +67,11 @@ class MakeDecisionCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $workspace = new Workspace($input->getOption('directory'));
+        $config = new Config($input->getOption('config'));
+        $workspace = new Workspace($config->directory());
         $sequence = new Sequence($workspace);
         $content = new DecisionContent($sequence->next(), $input->getArgument('title'), $input->getArgument('status'));
-        $record = new DecisionRecord($content);
+        $record = new DecisionRecord($content, $config);
         
         $workspace->add($record);
         

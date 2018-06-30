@@ -2,6 +2,7 @@
 
 namespace ADR\Command;
 
+use ADR\Filesystem\Config;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,11 +27,11 @@ class WorkspaceCountCommand extends Command
             ->setDescription('Count the ADRs')
             ->setHelp('This command allows you count the ADRs')
             ->addOption(
-                'directory',
+                'config',
                 null,
                 InputOption::VALUE_REQUIRED,
-                'Workspace that store the ADRs',
-                'docs/arch'
+                'Config file',
+                'adr.yml'
             );
     }
     
@@ -42,8 +43,9 @@ class WorkspaceCountCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $config = new Config($input->getOption('config'));
         $style = new SymfonyStyle($input, $output);
-        $workspace = new Workspace($input->getOption('directory'));
+        $workspace = new Workspace($config->directory());
 
         $style->table(['Count'], [[$workspace->count()]]);
     }

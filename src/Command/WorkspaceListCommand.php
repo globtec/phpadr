@@ -2,6 +2,7 @@
 
 namespace ADR\Command;
 
+use ADR\Filesystem\Config;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,11 +27,11 @@ class WorkspaceListCommand extends Command
             ->setDescription('List the ADRs')
             ->setHelp('This command allows you list the ADRs')
             ->addOption(
-                'directory',
+                'config',
                 null,
                 InputOption::VALUE_REQUIRED,
-                'Workspace that store the ADRs',
-                'docs/arch'
+                'Config file',
+                'adr.yml'
             );
     }
     
@@ -42,7 +43,8 @@ class WorkspaceListCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $workspace = new Workspace($input->getOption('directory'));
+        $config = new Config($input->getOption('config'));
+        $workspace = new Workspace($config->directory());
         
         $records = $workspace->records();
         

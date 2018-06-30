@@ -1,0 +1,3 @@
+directory: docs/arch
+template:
+  decision-record: template/skeleton.md
