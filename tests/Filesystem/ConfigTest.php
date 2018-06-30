@@ -2,6 +2,7 @@
 
 namespace ADR\Filesystem;
 
+use org\bovigo\vfs\vfsStream;
 use RuntimeException;
 use PHPUnit\Framework\TestCase;
 
@@ -15,11 +16,22 @@ class ConfigTest extends TestCase
         $this->assertEquals('template/skeleton.md', $config->decisionRecordTemplateFile());
     }
 
-    public function testInstanceFailure()
+    public function testInstanceNotExistingFailure()
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('The config file does not exist: invalid.yml');
 
         new Config('invalid.yml');
+    }
+
+    public function testInstanceNotReadableFailure()
+    {
+        $vfs = vfsStream::setup();
+        $configFile = vfsStream::newFile('adr.yml')->at($vfs)->chmod(0)->url();
+
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage("The config file isn't readable: $configFile");
+
+        new Config($configFile);
     }
 }
