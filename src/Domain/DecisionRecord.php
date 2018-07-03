@@ -2,6 +2,8 @@
 
 namespace ADR\Domain;
 
+use ADR\Filesystem\Config;
+
 /**
  * Represents the architecture decision using text formatting language like Markdown
  * 
@@ -22,18 +24,25 @@ class DecisionRecord
      * @var int
      */
     const NUMBER_LENGTH = 4;
-    
+
     /**
      * @var DecisionContent
      */
     private $content;
+
+    /**
+     * @var Config
+     */
+    private $config;
     
     /**
      * @param DecisionContent $content
+     * @param Config          $config
      */
-    public function __construct(DecisionContent $content)
+    public function __construct(DecisionContent $content, Config $config)
     {
         $this->content = $content;
+        $this->config = $config;
     }
     
     /**
@@ -96,8 +105,8 @@ class DecisionRecord
     private function template(): string
     {
         ob_start();
-        
-        require realpath(__DIR__ . '/../../template/skeleton.md');
+
+        require realpath($this->config->decisionRecordTemplateFile());
         
         return ob_get_clean();
     }
