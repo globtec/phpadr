@@ -61,5 +61,7 @@ class WorkspaceListCommand extends Command
                 }, $records)
             );
         }
+
+        return 0;
     }
 }
