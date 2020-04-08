@@ -76,5 +76,7 @@ class MakeDecisionCommand extends Command
         $workspace->add($record);
         
         $output->writeln('<info>ADR created successfully</info>');
+
+        return 0;
     }
 }

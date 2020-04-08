@@ -48,5 +48,7 @@ class WorkspaceCountCommand extends Command
         $workspace = new Workspace($config->directory());
 
         $style->table(['Count'], [[$workspace->count()]]);
+
+        return 0;
     }
 }
