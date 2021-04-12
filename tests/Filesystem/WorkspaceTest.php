@@ -11,7 +11,7 @@ class WorkspaceTest extends TestCase
 {
     public function testSetSuccessfully()
     {
-        $directory = vfsStream::setup()->url() . '/docs/arch';
+        $directory = vfsStream::setup()->url();
 
         $workspace = new Workspace($directory);
 
@@ -21,9 +21,12 @@ class WorkspaceTest extends TestCase
 
     public function testSetFailure()
     {
-        $this->expectException(RuntimeException::class);
+        $directory = vfsStream::setup('docs', 00)->url();
 
-        new Workspace('/path/to/docs/arch');
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage("The parent directory isn't writable: $directory");
+        
+        new Workspace($directory . '/arch');
     }
 
     public function testCount()
