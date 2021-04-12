@@ -62,6 +62,7 @@ class WorkspaceListCommandTest extends TestCase
         $vfs = vfsStream::setup();
         $configContent = file_get_contents('adr.yml');
         $configContent = str_replace('docs/arch', $vfs->url(), $configContent);
+        $configContent = str_replace('vendor/globtec/phpadr/', '', $configContent);
         $configFile = vfsStream::newFile('adr.yml')->at($vfs)->setContent($configContent)->url();
 
         $input = [
