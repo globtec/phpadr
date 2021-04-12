@@ -81,7 +81,7 @@ class MakeDecisionCommandTest extends TestCase
         $this->assertNull($option->getShortcut());
         $this->assertTrue($option->isValueRequired());
         $this->assertEquals('Config file', $option->getDescription());
-        $this->assertEquals('adr.yml', $option->getDefault());
+        $this->assertEquals('vendor/globtec/phpadr/adr.yml', $option->getDefault());
     }
 
     public function testExecute()
