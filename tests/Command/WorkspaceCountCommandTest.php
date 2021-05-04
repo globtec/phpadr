@@ -54,7 +54,7 @@ class WorkspaceCountCommandTest extends TestCase
         $this->assertNull($option->getShortcut());
         $this->assertTrue($option->isValueRequired());
         $this->assertEquals('Config file', $option->getDescription());
-        $this->assertEquals('adr.yml', $option->getDefault());
+        $this->assertEquals('vendor/globtec/phpadr/adr.yml', $option->getDefault());
     }
 
     public function testExecute()
@@ -62,6 +62,7 @@ class WorkspaceCountCommandTest extends TestCase
         $vfs = vfsStream::setup();
         $configContent = file_get_contents('adr.yml');
         $configContent = str_replace('docs/arch', $vfs->url(), $configContent);
+        $configContent = str_replace('vendor/globtec/phpadr/', '', $configContent);
         $configFile = vfsStream::newFile('adr.yml')->at($vfs)->setContent($configContent)->url();
 
         $input = [

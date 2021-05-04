@@ -13,7 +13,7 @@ class ConfigTest extends TestCase
         $config = new Config(__DIR__ . '/../../adr.yml');
 
         $this->assertEquals('docs/arch', $config->directory());
-        $this->assertEquals('template/skeleton.md', $config->decisionRecordTemplateFile());
+        $this->assertEquals('vendor/globtec/phpadr/template/skeleton.md', $config->decisionRecordTemplateFile());
     }
 
     public function testInstanceNotExistingFailure()

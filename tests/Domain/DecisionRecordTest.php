@@ -14,7 +14,7 @@ class DecisionRecordTest extends TestCase
     private $content;
 
     /**
-     * @var Config
+     * @var Config|MockObject
      */
     private $config;
 
@@ -24,7 +24,9 @@ class DecisionRecordTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->config = new Config('adr.yml');
+        $this->config = $this->getMockBuilder(Config::class)
+            ->disableOriginalConstructor()
+            ->getMock();
     }
 
     public function testFilename()
@@ -42,6 +44,8 @@ class DecisionRecordTest extends TestCase
         $this->content->expects($this->once())->method('getId')->willReturn(1);
         $this->content->expects($this->once())->method('getTitle')->willReturn('Foo');
         $this->content->expects($this->once())->method('getStatus')->willReturn('Accepted');
+
+        $this->config->expects($this->any())->method('decisionRecordTemplateFile')->willReturn('template/skeleton.md');
 
         $record = new DecisionRecord($this->content, $this->config);
 
