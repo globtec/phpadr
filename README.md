@@ -1,6 +1,6 @@
 # ADR Tools in PHP
 
-[![Build Status](https://travis-ci.org/globtec/phpadr.svg?branch=master)](https://travis-ci.org/globtec/phpadr)
+[![Build Status](https://travis-ci.com/globtec/phpadr.svg?branch=master)](https://travis-ci.com/globtec/phpadr)
 [![Coverage Status](https://coveralls.io/repos/github/globtec/phpadr/badge.svg?branch=master)](https://coveralls.io/github/globtec/phpadr?branch=master)
 
 A PHP based command-line interface tool for working with Architecture Decision Records (ADR).
